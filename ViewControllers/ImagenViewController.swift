@@ -69,6 +69,8 @@ class ImagenViewController: UIViewController, UIImagePickerControllerDelegate, U
         siguienteVC.imagenURL = sender as! String
         siguienteVC.descrip = descripcionTextField.text!
         siguienteVC.imagenID = imagenID
+        
+        
     }
     
     func mostrarAlerta(title: String, message: String, action: String){
@@ -77,6 +79,9 @@ class ImagenViewController: UIViewController, UIImagePickerControllerDelegate, U
         alertaGuia.addAction(cancelok)
         present(alertaGuia, animated: true, completion: nil)
     }
+    
+    
+    
     /*
     // MARK: - Navigation
 

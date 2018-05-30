@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -215,11 +216,18 @@
                                 <action selector="cerrarSesionTapped:" destination="nol-Pk-PWf" id="bYL-wB-aSH"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="3Az-mg-v5b">
-                            <connections>
-                                <segue destination="vwK-qX-61y" kind="show" id="CXU-u2-auR"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="3Az-mg-v5b">
+                                <connections>
+                                    <segue destination="vwK-qX-61y" kind="show" id="CXU-u2-auR"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="play" id="8Gv-dl-I5u">
+                                <connections>
+                                    <segue destination="hrH-pl-mbT" kind="show" id="bib-6K-04b"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="JTl-ef-or5" id="s9z-he-QeD"/>
@@ -270,6 +278,74 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="upn-MY-5KB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1279" y="700"/>
+        </scene>
+        <!--Sound View Controller-->
+        <scene sceneID="Pj4-NE-CaC">
+            <objects>
+                <viewController id="hrH-pl-mbT" customClass="SoundViewController" customModule="Snapchat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JQy-Zb-WZg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Graba un audio para tu Snap" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdr-Rj-74H">
+                                <rect key="frame" x="51" y="94" width="218" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" highlighted="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NAz-xV-G11">
+                                <rect key="frame" x="106.5" y="150" width="107" height="34"/>
+                                <state key="normal" title="Grabar Audio">
+                                    <color key="titleColor" red="1" green="0.2527923882" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="recordTapped:" destination="vwK-qX-61y" eventType="touchUpInside" id="2Tm-2x-58P"/>
+                                    <action selector="recordTapped:" destination="hrH-pl-mbT" eventType="touchUpInside" id="eUA-XD-VPM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gSG-Vc-DSc">
+                                <rect key="frame" x="115.5" y="214" width="89" height="34"/>
+                                <state key="normal" title="Reproducir">
+                                    <color key="titleColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="playTapped:" destination="hrH-pl-mbT" eventType="touchUpInside" id="kG9-hg-HA0"/>
+                                    <action selector="playTapped:" destination="vwK-qX-61y" eventType="touchUpInside" id="r3A-FO-p1g"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xOi-OV-e5K">
+                                <rect key="frame" x="135" y="278" width="50" height="34"/>
+                                <color key="backgroundColor" red="0.57919406890000003" green="0.1280144453" blue="0.57268613580000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Enviar">
+                                    <color key="titleColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="addTapped:" destination="vwK-qX-61y" eventType="touchUpInside" id="cxd-jk-gem"/>
+                                    <action selector="addTapped:" destination="hrH-pl-mbT" eventType="touchUpInside" id="xnz-kp-EKa"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="bdr-Rj-74H" firstAttribute="centerX" secondItem="JQy-Zb-WZg" secondAttribute="centerX" id="6Hy-y9-tKh"/>
+                            <constraint firstItem="NAz-xV-G11" firstAttribute="centerX" secondItem="JQy-Zb-WZg" secondAttribute="centerX" id="9yp-u9-Uq7"/>
+                            <constraint firstItem="xOi-OV-e5K" firstAttribute="centerX" secondItem="JQy-Zb-WZg" secondAttribute="centerX" id="KLw-aV-asA"/>
+                            <constraint firstItem="bdr-Rj-74H" firstAttribute="top" secondItem="WIl-FO-cAW" secondAttribute="top" constant="30" id="Prt-g2-9F5"/>
+                            <constraint firstItem="gSG-Vc-DSc" firstAttribute="centerX" secondItem="JQy-Zb-WZg" secondAttribute="centerX" id="aPw-7e-cyD"/>
+                            <constraint firstItem="xOi-OV-e5K" firstAttribute="top" secondItem="gSG-Vc-DSc" secondAttribute="bottom" constant="30" id="n7r-g3-Lwi"/>
+                            <constraint firstItem="NAz-xV-G11" firstAttribute="top" secondItem="bdr-Rj-74H" secondAttribute="bottom" constant="35" id="xgo-xa-l0w"/>
+                            <constraint firstItem="gSG-Vc-DSc" firstAttribute="top" secondItem="NAz-xV-G11" secondAttribute="bottom" constant="30" id="yy0-Oe-Cny"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="WIl-FO-cAW"/>
+                    </view>
+                    <connections>
+                        <outlet property="recordButton" destination="NAz-xV-G11" id="Amm-3S-yKK"/>
+                        <segue destination="MA8-XO-8XI" kind="show" identifier="sendSoundSegue" id="cOz-RX-HUk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D9b-QR-Fzl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1999" y="699"/>
         </scene>
         <!--Title-->
         <scene sceneID="cpR-cj-e5J">
@@ -386,4 +462,7 @@
     <resources>
         <image name="10-321" width="200" height="70"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="cOz-RX-HUk"/>
+    </inferredMetricsTieBreakers>
 </document>

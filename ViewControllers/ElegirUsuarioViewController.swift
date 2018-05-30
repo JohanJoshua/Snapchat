@@ -16,6 +16,9 @@ class ElegirUsuarioViewController: UIViewController,UITableViewDataSource, UITab
     var imagenURL = ""
     var descrip = ""
     var imagenID = ""
+    var soundURL = ""
+    var soundID = ""
+    var audio:Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,11 +46,17 @@ class ElegirUsuarioViewController: UIViewController,UITableViewDataSource, UITab
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if audio! {
+            let usuario = usuarios[indexPath.row]
+            let snap = ["from":Auth.auth().currentUser?.email,"ID":soundID,"URL":soundURL]
+            
+            Database.database().reference().child("usuarios").child(usuario.uid).child("snaps").childByAutoId().setValue(snap)
+            navigationController?.popViewController(animated: true)
+        }else{
         let usuario = usuarios[indexPath.row]
         let snap = ["from" : Auth.auth().currentUser?.email, "descripcion" : descrip, "imagenURL" : imagenURL, "imagenID" : imagenID]
         Database.database().reference().child("usuarios").child(usuario.uid).child("snaps").childByAutoId().setValue(snap)
         navigationController?.popViewController(animated: true)
+        }
     }
-
-
 }
